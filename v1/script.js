@@ -29,8 +29,11 @@ function sendMessage() {
     })
     .then(response => response.json())
     .then(data => {
-        const botResponse = data.response;
-        appendMessage('bot', botResponse);
+        const botIdea = data.idea; // Access the idea from the response
+        const botImage = data.image; // Access the image URL from the response
+        
+        appendMessage('bot', botIdea);
+        backendImage.src = botImage; // Set the source of the backendImage element
     })
     .catch(error => {
         console.error('Error:', error);
@@ -44,7 +47,3 @@ function appendMessage(sender, message) {
     chat.appendChild(messageDiv);
     chat.scrollTop = chat.scrollHeight;
 }
-
-
-
-
